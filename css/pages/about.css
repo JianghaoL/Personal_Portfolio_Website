@@ -89,19 +89,4 @@
   grid-column: 2; /* Place in the second column */
 }
 
-/* Audio Waveform Section */
-#audio-waveform {
-  width: 100%;
-  height: 200px;
-  background: #0a0c1b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#audio-waveform canvas {
-  width: 100%;
-  height: 100%;
-}
-
 /* Remove wave-section class from introduction section */

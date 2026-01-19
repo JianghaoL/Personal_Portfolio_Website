@@ -2,6 +2,8 @@
 @import 'layout.css';
 @import 'components/buttons.css';
 @import 'components/cards.css';
+@import 'components/work-carousel.css';
+@import 'components/contact-modal.css';
 @import 'pages/about.css';
 
 :root {
@@ -19,6 +21,7 @@ body {
   scroll-behavior: smooth;
   line-height: 1.6;
   font-weight: 400;
+  padding-top: 80px; /* Account for fixed header height */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -30,12 +33,15 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero Section */
 #hero {
   height: 100vh;
+  margin-top: -80px; /* Offset the body padding for full-screen hero */
+  padding-top: 80px; /* Add back padding so content isn't under header */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 #waveCanvas {
   position: absolute;
@@ -65,36 +71,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1rem;
   opacity: .85;
 }
-.btn-primary {
-  display: inline-block;
-  margin-top: 2rem; /* Increased space between button and text above */
-  background: transparent; /* No fill by default */
-  padding: 1.2rem 3rem; /* Increased width by adding more horizontal padding */
-  font-size: 1.2rem; /* Larger font size */
-  border-radius: 8px; /* Slightly larger border radius */
-  color: #ffffff; /* White text color */
-  text-decoration: none;
-  border: 2px solid var(--accent); /* Border with accent color */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-.btn-primary:hover {
-  background: linear-gradient(135deg, #6AB0F3, #4a8dc3, #6AB0F3); /* Subtle dynamic gradient fill */
-  background-size: 200% 200%; /* Enable gradient animation */
-  animation: gradientShift 3s ease infinite; /* Animate gradient */
-  color: #ffffff; /* Keep text color white */
-  transform: scale(1.1); /* Slightly enlarge on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
-}
-.btn-primary:active {
-  transform: scale(0.95); /* Slightly shrink on click */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reduce shadow on click */
-}
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+/* btn-primary styles are defined in components/buttons.css */
 
 /* Section Titles */
 section {
@@ -105,6 +82,12 @@ h2 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  margin-bottom: 2rem;
 }
 
 /* Section Waveform Backgrounds */
@@ -177,6 +160,8 @@ section.wave-section > *:not(.section-wave-canvas) {
   background: var(--bg);
   position: relative;
   overflow: hidden;
+  padding-top: 0rem;
+  margin-top: -95vh;
 }
 #intro::before {
   content: none;
@@ -200,7 +185,7 @@ section.wave-section > *:not(.section-wave-canvas) {
   grid-template-columns: 320px 1fr;
   gap: 2.4rem;
   align-items: center;
-  padding: 2rem;
+  padding: 0 2rem 2rem;
 }
 .intro-photo {
   width: 320px;
@@ -261,29 +246,118 @@ section.wave-section > *:not(.section-wave-canvas) {
   list-style: none;
   padding: 0;
   margin: 20px 0;
+  flex-wrap: wrap;
 }
 
 .contact-buttons li {
   display: inline-block;
 }
 
-.contact-buttons a {
-  display: inline-block;
+/* Unified Contact Button Style */
+.contact-buttons .contact-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   padding: 0.8rem 1.6rem;
   font-size: 1rem;
   font-weight: 500;
+  line-height: 1.5;
   color: var(--text);
   text-decoration: none;
-  border: 2px solid var(--accent); /* Unified border color */
+  border: 2px solid var(--accent);
   border-radius: 6px;
   background: transparent;
-  transition: background-color var(--transition), color var(--transition), transform var(--transition);
+  overflow: hidden;
+  cursor: pointer;
+  font-family: inherit;
+  box-sizing: border-box;
+  height: 48px;
+  transition: 
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease,
+    background 0.3s ease;
 }
 
-.contact-buttons a:hover {
-  background-color: var(--accent);
-  color: var(--bg);
-  transform: scale(1.05);
+.contact-buttons .contact-btn .btn-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: currentColor;
+  transition: transform 0.3s ease;
+}
+
+/* Ensure all buttons have same min-width for uniform size */
+.contact-buttons .contact-btn {
+  min-width: 140px;
+  justify-content: center;
+}
+
+/* Flowing light effect for all contact buttons */
+.contact-buttons .contact-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 30%,
+    rgba(106, 176, 243, 0.15) 45%,
+    rgba(106, 176, 243, 0.3) 50%,
+    rgba(106, 176, 243, 0.15) 55%,
+    transparent 70%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contact-buttons .contact-btn:hover::before {
+  left: 100%;
+}
+
+.contact-buttons .contact-btn:hover {
+  box-shadow: 
+    0 0 20px rgba(106, 176, 243, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.2);
+  border-color: rgba(106, 176, 243, 0.8);
+  background: rgba(106, 176, 243, 0.08);
+}
+
+.contact-buttons .contact-btn:hover .btn-icon {
+  transform: scale(1.1);
+}
+
+.contact-buttons .contact-btn:active {
+  transform: scale(0.98);
+}
+
+/* Focus states for contact buttons */
+.contact-buttons .contact-btn:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(106, 176, 243, 0.4),
+    0 0 20px rgba(106, 176, 243, 0.15);
+}
+
+.contact-buttons .contact-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* My Contact button - subtle highlight as primary action */
+.contact-buttons .contact-btn.my-contact {
+  background: linear-gradient(135deg, rgba(106, 176, 243, 0.1) 0%, rgba(74, 141, 195, 0.05) 100%);
+}
+
+.contact-buttons .contact-btn.my-contact:hover {
+  background: linear-gradient(135deg, rgba(106, 176, 243, 0.2) 0%, rgba(74, 141, 195, 0.1) 100%);
 }
 
 /* Header Styles */
@@ -327,6 +401,7 @@ header {
 }
 
 .lang-toggle {
+  position: relative;
   background: transparent;
   border: 1px solid var(--accent);
   color: var(--text);
@@ -334,12 +409,57 @@ header {
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.9rem;
-  transition: background-color var(--transition), color var(--transition);
+  overflow: hidden;
+  transition: 
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Flowing light effect for language toggle */
+.lang-toggle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 30%,
+    rgba(106, 176, 243, 0.15) 45%,
+    rgba(106, 176, 243, 0.3) 50%,
+    rgba(106, 176, 243, 0.15) 55%,
+    transparent 70%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.lang-toggle:hover::before {
+  left: 100%;
 }
 
 .lang-toggle:hover {
-  background-color: var(--accent);
-  color: var(--bg);
+  box-shadow: 
+    0 0 15px rgba(106, 176, 243, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.15);
+  border-color: rgba(106, 176, 243, 0.8);
+}
+
+.lang-toggle:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(106, 176, 243, 0.4),
+    0 0 15px rgba(106, 176, 243, 0.15);
+}
+
+.lang-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* Vision Section Styles */
@@ -388,4 +508,40 @@ header {
   .intro-card h2, .intro-lead, .intro-type { text-align: center; }
   .skills-list { justify-content: center; }
   .intro-ctas { justify-content: center; }
+}
+
+/* =============================================
+   Reduced Motion Support for Style.css Buttons
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  .contact-buttons a::before,
+  .lang-toggle::before {
+    transition: none;
+  }
+  
+  .contact-buttons a:hover::before,
+  .lang-toggle:hover::before {
+    left: -100%;
+  }
+  
+  .contact-buttons a,
+  .lang-toggle {
+    transition: 
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+}
+
+/* Site Footer */
+.site-footer {
+  background: var(--bg);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.site-footer p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  margin: 0;
 }
