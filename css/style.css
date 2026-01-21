@@ -4,15 +4,10 @@
 @import 'components/cards.css';
 @import 'components/work-carousel.css';
 @import 'components/contact-modal.css';
+@import 'components/resume-modal.css';
 @import 'pages/about.css';
 
-:root {
-  --bg: #0a0c1b;
-  --text: #ffffff;
-  --accent: #6AB0F3;
-  --transition: 0.6s cubic-bezier(.23,1,.32,1);
-  --card-bg: #1e1e2d;
-}
+/* Note: Root variables are defined in base.css */
 
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -93,8 +88,10 @@ h2 {
 /* Section Waveform Backgrounds */
 section.wave-section {
   position: relative;
-  overflow: hidden;
+  overflow: var(--overflow-clip);
   background: var(--bg);
+  /* Ensures content stays within bounds during scroll */
+  isolation: isolate;
 }
 .section-wave-canvas {
   position: absolute;
@@ -123,7 +120,8 @@ section.wave-section > *:not(.section-wave-canvas) {
 .work-card {
   background: var(--card-bg);
   padding: 1.6rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
+  overflow: var(--overflow-clip);
   transition: transform var(--transition), box-shadow var(--transition);
 }
 .work-card:hover {
@@ -132,10 +130,11 @@ section.wave-section > *:not(.section-wave-canvas) {
 }
 .work-preview {
   height: 160px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background-size: cover;
   background-position: center;
   margin-bottom: .8rem;
+  overflow: var(--overflow-clip);
 }
 
 /* Scroll Reveal */
@@ -190,19 +189,20 @@ section.wave-section > *:not(.section-wave-canvas) {
 .intro-photo {
   width: 320px;
   height: 320px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   background-size: cover;
   background-position: center;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   border: 1px solid rgba(255,255,255,0.03);
+  overflow: var(--overflow-clip);
 }
 .intro-card h2 { text-align: left; font-size: 1.8rem; font-weight: 700; margin-bottom: .25rem; }
 .intro-lead { text-align: left; margin-top: 0; opacity: .95; }
 .intro-type { color: var(--accent); font-weight: 500; margin-top: .6rem; text-align: left; min-height: 1.4rem; font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 .skills-list { list-style: none; padding: 0; margin: 1rem 0; display: flex; gap: .6rem; flex-wrap: wrap; }
-.skill { background: rgba(255,255,255,0.03); padding: .45rem .7rem; border-radius: 999px; font-size: .9rem; }
+.skill { background: rgba(255,255,255,0.03); padding: .45rem .7rem; border-radius: var(--radius-full); font-size: .9rem; }
 .intro-ctas { margin-top: 1rem; display: flex; gap: .8rem; }
-.intro-ctas .btn { padding: .6rem 1rem; border-radius: 6px; background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.06); text-decoration: none; }
+.intro-ctas .btn { padding: .6rem 1rem; border-radius: var(--radius-sm); background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.06); text-decoration: none; overflow: var(--overflow-clip); }
 
 /* Contact Section Styles */
 .contact-icons {
@@ -224,7 +224,8 @@ section.wave-section > *:not(.section-wave-canvas) {
   height: 40px;
   background-size: cover;
   background-position: center;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
+  overflow: var(--overflow-clip);
 }
 
 .contact-icons a.email {
@@ -266,9 +267,9 @@ section.wave-section > *:not(.section-wave-canvas) {
   color: var(--text);
   text-decoration: none;
   border: 2px solid var(--accent);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background: transparent;
-  overflow: hidden;
+  overflow: var(--overflow-clip);
   cursor: pointer;
   font-family: inherit;
   box-sizing: border-box;
@@ -360,6 +361,15 @@ section.wave-section > *:not(.section-wave-canvas) {
   background: linear-gradient(135deg, rgba(106, 176, 243, 0.2) 0%, rgba(74, 141, 195, 0.1) 100%);
 }
 
+/* Resume button - document-themed styling */
+.contact-buttons .contact-btn.resume {
+  background: linear-gradient(135deg, rgba(156, 136, 255, 0.1) 0%, rgba(106, 90, 205, 0.05) 100%);
+}
+
+.contact-buttons .contact-btn.resume:hover {
+  background: linear-gradient(135deg, rgba(156, 136, 255, 0.2) 0%, rgba(106, 90, 205, 0.1) 100%);
+}
+
 /* Header Styles */
 header {
   background: var(--bg);
@@ -406,10 +416,10 @@ header {
   border: 1px solid var(--accent);
   color: var(--text);
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.9rem;
-  overflow: hidden;
+  overflow: var(--overflow-clip);
   transition: 
     color 0.3s ease,
     border-color 0.3s ease,
@@ -483,10 +493,11 @@ header {
 .vision-image {
   width: 1000px;
   height: 600px;
-  border-radius: 12px; /* Chamfered rectangle */
+  border-radius: var(--radius-md); /* Chamfered rectangle */
   object-fit: cover;
   margin-bottom: 1.5rem;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect */
+  overflow: var(--overflow-clip);
 }
 
 .vision-header {

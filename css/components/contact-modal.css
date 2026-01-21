@@ -43,7 +43,7 @@ body.modal-open {
     rgba(20, 22, 35, 0.98) 100%
   );
   border: 1px solid rgba(106, 176, 243, 0.2);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   padding: 2.5rem;
   min-width: 320px;
   max-width: 420px;
@@ -54,6 +54,7 @@ body.modal-open {
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
   transform: scale(0.9) translateY(20px);
   opacity: 0;
+  overflow: var(--overflow-clip);
   transition: 
     transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
     opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -82,11 +83,12 @@ body.modal-open {
   height: 36px;
   border: none;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: var(--overflow-clip);
   transition: 
     background 0.3s ease,
     transform 0.3s ease;
@@ -125,12 +127,13 @@ body.modal-open {
 .contact-card-avatar {
   width: 80px;
   height: 80px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   margin: 0 auto 1rem;
   background-size: cover;
   background-position: center;
   border: 2px solid rgba(106, 176, 243, 0.3);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  overflow: var(--overflow-clip);
 }
 
 .contact-card-name {
@@ -171,18 +174,19 @@ body.modal-open {
   margin: 0 -0.75rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
 }
 
 .contact-info-icon {
   width: 40px;
   height: 40px;
   background: rgba(106, 176, 243, 0.1);
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  overflow: var(--overflow-clip);
 }
 
 .contact-info-icon svg {
@@ -238,7 +242,8 @@ body.modal-open {
   justify-content: center;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
+  border-radius: var(--radius-md);
+  overflow: var(--overflow-clip);
   transition: 
     background 0.3s ease,
     border-color 0.3s ease,
@@ -275,7 +280,7 @@ body.modal-open {
 /* My Contact Button Style */
 .btn.my-contact {
   position: relative;
-  overflow: hidden;
+  overflow: var(--overflow-clip);
   background: linear-gradient(135deg, rgba(106, 176, 243, 0.15) 0%, rgba(74, 141, 195, 0.1) 100%);
 }
 

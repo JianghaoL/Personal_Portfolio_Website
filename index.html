@@ -16,8 +16,8 @@
     <nav>
       <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="work-gallery/">Work Gallery</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="work-gallery/index.html">Work Gallery</a></li>
         <li><a href="about.html">About</a></li> <!-- Updated link to about.html -->
       </ul>
     </nav>
@@ -70,7 +70,7 @@
     <canvas class="section-wave-canvas" aria-hidden="true"></canvas>
     <h2>My Work Gallery</h2>
     <p>Explore my projects and designs.</p>
-    <a href="work-gallery/" class="btn-gallery">View Gallery</a>
+    <a href="work-gallery/index.html" class="btn-gallery">View Gallery</a>
   </section>
 
   <!-- Contact 区 -->
@@ -85,6 +85,14 @@
             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
           </svg>
           <span>My Contact</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="btn contact-btn resume" aria-haspopup="dialog" aria-controls="resume-modal-overlay">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11zm-3-7H9v-2h6v2zm0 4H9v-2h6v2z"></path>
+          </svg>
+          <span>Resume</span>
         </button>
       </li>
       <li>
@@ -181,6 +189,145 @@
     </div>
   </div>
 
+  <!-- Resume Modal Overlay -->
+  <div id="resume-modal-overlay" 
+       class="resume-modal-overlay" 
+       role="dialog" 
+       aria-modal="true" 
+       aria-labelledby="resume-modal-title"
+       aria-hidden="true">
+    <div class="resume-modal">
+      <!-- Modal Header -->
+      <header class="resume-modal-header">
+        <h2 id="resume-modal-title" class="resume-modal-title">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          Resume
+        </h2>
+        <button type="button" 
+                class="resume-modal-close" 
+                aria-label="Close resume">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </header>
+      
+      <!-- Resume Content (HTML version - easily updatable) -->
+      <div class="resume-modal-content">
+        <div class="resume-html-content">
+          <!-- Personal Info -->
+          <h2>Jianghao Li</h2>
+          <p style="color: var(--accent); margin-bottom: 0.5rem;">Game Designer & Developer</p>
+          
+          <div class="resume-contact-info">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Los Angeles, CA
+            </span>
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              contact@jianghao.li
+            </span>
+          </div>
+          
+          <!-- Education -->
+          <h3>Education</h3>
+          <div class="resume-experience-item">
+            <h4>University of Southern California</h4>
+            <p class="resume-date">Expected Graduation: 2026</p>
+            <ul>
+              <li>BFA in Game Development and Interactive Design</li>
+              <li>Minor in Video Game Programming</li>
+              <li>Minor in Music Recording</li>
+            </ul>
+          </div>
+          
+          <!-- Skills -->
+          <h3>Skills & Proficiency</h3>
+          <div class="resume-skills-grid">
+            <div class="resume-skill-category">
+              <h4>Game Development</h4>
+              <div class="resume-skill-tags">
+                <span class="resume-skill-tag">Unity</span>
+                <span class="resume-skill-tag">Unreal Engine</span>
+                <span class="resume-skill-tag">Game Design</span>
+              </div>
+            </div>
+            <div class="resume-skill-category">
+              <h4>Programming</h4>
+              <div class="resume-skill-tags">
+                <span class="resume-skill-tag">C#</span>
+                <span class="resume-skill-tag">C++</span>
+                <span class="resume-skill-tag">Python</span>
+                <span class="resume-skill-tag">Java</span>
+              </div>
+            </div>
+            <div class="resume-skill-category">
+              <h4>Audio</h4>
+              <div class="resume-skill-tags">
+                <span class="resume-skill-tag">FMOD</span>
+                <span class="resume-skill-tag">Wwise</span>
+                <span class="resume-skill-tag">Studio One</span>
+                <span class="resume-skill-tag">Logic Pro</span>
+              </div>
+            </div>
+            <div class="resume-skill-category">
+              <h4>Tools & Other</h4>
+              <div class="resume-skill-tags">
+                <span class="resume-skill-tag">Git</span>
+                <span class="resume-skill-tag">Perforce</span>
+                <span class="resume-skill-tag">Procreate</span>
+                <span class="resume-skill-tag">Bilingual</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Experience/Projects section - can be expanded -->
+          <h3>Focus Areas</h3>
+          <div class="resume-experience-item">
+            <h4>Game Design & Development</h4>
+            <p>Specializing in creating games that are educationally significant and impactful, with a focus on meaningful player experiences.</p>
+          </div>
+          <div class="resume-experience-item">
+            <h4>Sound Design & Audio Implementation</h4>
+            <p>Expertise in sound design and audio engineering for games and theater, utilizing middleware solutions like FMOD and Wwise.</p>
+          </div>
+          <div class="resume-experience-item">
+            <h4>Audio Engineering</h4>
+            <p>Professional experience in studio recording, mixing, and audio production for various media.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Modal Footer with Download Button -->
+      <footer class="resume-modal-footer">
+        <a href="assets/documents/resume.pdf" 
+           download="Jianghao_Li_Resume.pdf" 
+           class="btn-download-resume">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Download Resume (PDF)</span>
+        </a>
+      </footer>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="site-footer">
     <p>&copy; 2026 Jianghao Li. All rights reserved.</p>
@@ -191,5 +338,6 @@
   <script src="js/main.js"></script>
   <script src="js/work-carousel.js"></script>
   <script src="js/contact-modal.js"></script>
+  <script src="js/resume-modal.js"></script>
 </body>
 </html>

@@ -15,9 +15,9 @@
   color: var(--text);
   text-decoration: none;
   border: 2px solid var(--accent);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background: transparent;
-  overflow: hidden;
+  overflow: var(--overflow-clip);
   cursor: pointer;
   transition: 
     color 0.3s ease,
@@ -95,12 +95,12 @@
   padding: 1.2rem 3rem;
   font-size: 1.2rem;
   font-weight: 500;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   color: #ffffff;
   text-decoration: none;
   border: 2px solid var(--accent);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  overflow: var(--overflow-clip);
   cursor: pointer;
   transition: 
     color 0.3s ease,
@@ -173,12 +173,12 @@
   padding: 1.2rem 3rem;
   font-size: 1.2rem;
   font-weight: 500;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   color: #ffffff;
   text-decoration: none;
   border: 2px solid var(--accent);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  overflow: var(--overflow-clip);
   cursor: pointer;
   transition: 
     color 0.3s ease,

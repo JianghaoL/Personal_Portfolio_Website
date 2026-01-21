@@ -2,7 +2,8 @@
 .work-card {
   background: var(--card-bg);
   padding: 1.6rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
+  overflow: var(--overflow-clip);
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
@@ -13,8 +14,9 @@
 
 .work-preview {
   height: 160px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background-size: cover;
   background-position: center;
   margin-bottom: .8rem;
+  overflow: var(--overflow-clip);
 }
