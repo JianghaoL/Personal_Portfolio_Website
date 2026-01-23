@@ -177,6 +177,62 @@
   margin-bottom: 4rem;
 }
 
+/* =============================================
+   JUSTIFIED TEXT STYLING
+   Two-side justified alignment for long-form content
+   with improved readability settings
+   ============================================= */
+.justified-text,
+.content-block--text p,
+.media-text-content p,
+.results-list li {
+  text-align: justify;
+  text-justify: inter-word;
+  
+  /* Enable hyphenation to avoid excessive gaps */
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  
+  /* Improved word spacing for justified text */
+  word-spacing: -0.05em;
+  
+  /* Prevent orphans and widows */
+  orphans: 3;
+  widows: 3;
+  
+  /* Ensure proper language for hyphenation */
+  -webkit-locale: "en";
+}
+
+/* Enhanced line-height for justified text readability */
+.content-block--text p,
+.media-text-content p {
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+/* Responsive adjustments for justified text */
+@media (max-width: 768px) {
+  /* On smaller screens, left-align for better readability */
+  .content-block--text p,
+  .media-text-content p,
+  .results-list li {
+    text-align: left;
+    hyphens: none;
+    word-spacing: normal;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Tablet: slightly relaxed justified settings */
+  .content-block--text p,
+  .media-text-content p {
+    word-spacing: -0.03em;
+  }
+}
+
 /* Scroll reveal animation */
 .content-block[data-reveal] {
   opacity: 0;
@@ -233,15 +289,16 @@
   font-weight: 700;
   margin-bottom: 1.25rem;
   color: var(--accent);
+  /* Titles remain left-aligned, not justified */
   text-align: left;
 }
 
 .content-block--text p {
   font-size: 1.05rem;
-  line-height: 1.8;
+  /* line-height handled by justified text section */
   color: rgba(255, 255, 255, 0.85);
   margin-bottom: 1.25rem;
-  text-align: left;
+  /* text-align: justify applied via justified text section */
 }
 
 .content-block--text p:last-child {
