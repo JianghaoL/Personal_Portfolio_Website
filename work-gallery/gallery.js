@@ -6,96 +6,114 @@
  * - Flip card display with 3D animation
  * - Smooth transitions between views
  * - Data-driven architecture for easy updates
+ * - Direct linking to project detail pages
  * 
  * To add a new project, simply add a new object to the galleryData array.
+ * Categories should match those used in the project detail pages for consistency.
  */
 
 // ============================================
+// CATEGORY DEFINITIONS
+// Categories are defined once here and used across the gallery
+// Keep these in sync with the categories in project detail pages
+// ============================================
+const CATEGORIES = {
+  GAME_DEVELOPMENT: 'Game Development',
+  GAME_AUDIO: 'Game Audio',
+  AUDIO_TOOL: 'Audio Tool',
+  AUDIO_PRODUCTION: 'Audio Production',
+  THEATER: 'Theater'
+};
+
+// ============================================
 // GALLERY DATA - Add new projects here
+// Each project links to its corresponding detail page
+// Thumbnail paths can be empty strings to show placeholder
 // ============================================
 const galleryData = [
   {
     id: 1,
-    title: "Audio-Reactive Game Environment",
-    category: "Game Audio",
+    title: "Forest Fears",
+    category: CATEGORIES.GAME_DEVELOPMENT,
     year: 2025,
-    date: "2025-11-15",
-    thumbnail: "../assets/images/work-thumbs/project01.jpg",
-    description: "An immersive game environment where visual elements respond dynamically to in-game audio and player actions. Features real-time FFT analysis and procedural generation.",
-    techStack: ["Unity", "C#", "FMOD", "Shader Graph"],
-    links: [
-      { label: "View Project", url: "#", icon: "external" },
-      { label: "GitHub", url: "#", icon: "github" }
-    ]
+    date: "2025-03-15",
+    thumbnail: "../assets/images/thumbnails/thumbnails (11).png",
+    description: "An educational game that aims to help players gain awareness of nature and its connection with humans.",
+    techStack: ["Unity", "C#", "Wwise", "Logic Pro", "Git"],
+    projectPage: "../project-pages/forest-fears.html",
+    roles: ["Level Design", "Game Programming", "Narrative Design", "Audio Implementation", "Composing"]
   },
   {
     id: 2,
-    title: "Procedural Sound Design System",
-    category: "Sound Design",
+    title: "Dough it Yourself",
+    category: CATEGORIES.GAME_DEVELOPMENT,
     year: 2025,
-    date: "2025-08-22",
-    thumbnail: "../assets/images/work-thumbs/project02.jpg",
-    description: "A modular procedural audio system that generates realistic environmental soundscapes based on game world parameters like weather, time of day, and player location.",
-    techStack: ["Wwise", "Unreal Engine", "C++"],
-    links: [
-      { label: "Demo", url: "#", icon: "play" },
-      { label: "Documentation", url: "#", icon: "external" }
-    ]
+    date: "2025-08-01",
+    thumbnail: "../assets/images/thumbnails/thumbnails (7).png", // Placeholder - add actual thumbnail path when available
+    description: "A donut making puzzle game made for GMTK 2025.",
+    techStack: ["Unity", "C#", "Git"],
+    projectPage: "../project-pages/dough-it-yourself.html",
+    roles: ["Level Design", "Game Programming", "Game Prototyping", "Audio Implementation", "Sound Design"]
   },
   {
     id: 3,
-    title: "Interactive Music Installation",
-    category: "Installation",
+    title: "Mantle",
+    category: CATEGORIES.GAME_AUDIO,
     year: 2025,
-    date: "2025-05-10",
-    thumbnail: "../assets/images/work-thumbs/project03.jpg",
-    description: "An interactive installation piece that generates ambient music based on audience movement and presence, creating a unique collaborative sonic environment.",
-    techStack: ["Max/MSP", "Arduino", "Python", "OpenCV"],
-    links: [
-      { label: "View Project", url: "#", icon: "external" }
-    ]
+    date: "2025-05-20",
+    thumbnail: "../assets/images/thumbnails/thumbnails (14).png",
+    description: "A game that focuses on narrative, seeking ways to guide players into believing different design ideas.",
+    techStack: ["Unity", "Logic Pro", "Recording", "Perforce", "Sound Design"],
+    projectPage: "../project-pages/mantle.html",
+    roles: ["Sound Design"]
   },
   {
     id: 4,
-    title: "Virtual Reality Soundscape",
-    category: "Game Audio",
-    year: 2024,
-    date: "2024-12-05",
-    thumbnail: "../assets/images/work-thumbs/project04.jpg",
-    description: "Spatial audio implementation for a VR horror experience. Utilized binaural rendering and dynamic reverb zones for maximum immersion.",
-    techStack: ["Unity", "Oculus SDK", "Resonance Audio"],
-    links: [
-      { label: "Case Study", url: "#", icon: "external" },
-      { label: "GitHub", url: "#", icon: "github" }
-    ]
+    title: "CrossfadER",
+    category: CATEGORIES.AUDIO_TOOL,
+    year: 2025,
+    date: "2025-10-10",
+    thumbnail: "../assets/images/thumbnails/thumbnails (21).png",
+    description: "An audio tool automating the looping sound production workflow.",
+    techStack: ["DSP", "C#", "Avalonia", "Git"],
+    projectPage: "../project-pages/crossfadER.html",
+    roles: ["Audio Programming"]
   },
   {
     id: 5,
-    title: "AI Music Composition Tool",
-    category: "Machine Learning",
+    title: "SpongeBob Musical",
+    category: CATEGORIES.THEATER,
     year: 2024,
-    date: "2024-09-18",
-    thumbnail: "../assets/images/work-thumbs/project05.jpg",
-    description: "A machine learning-powered tool that assists composers by generating musical ideas based on mood, genre, and structural inputs using transformer models.",
-    techStack: ["Python", "TensorFlow", "Flask", "React"],
-    links: [
-      { label: "Try Demo", url: "#", icon: "play" },
-      { label: "GitHub", url: "#", icon: "github" }
-    ]
+    date: "2024-04-15",
+    thumbnail: "../assets/images/thumbnails/thumbnails (9).jpg",
+    description: "Juvenile version of the Broadway musical: SpongeBob",
+    techStack: ["Logic Pro", "Mainstage", "Theater Sound", "Live Mixing", "Sound Reinforcement", "Microphone Setup"],
+    projectPage: "../project-pages/spongebob-musical.html",
+    roles: ["Head of Crew", "Sound Designer"]
   },
   {
     id: 6,
-    title: "Custom Audio Plugin Suite",
-    category: "Audio Tools",
+    title: "SpongeBob Soundtrack",
+    category: CATEGORIES.AUDIO_PRODUCTION,
     year: 2024,
-    date: "2024-06-30",
-    thumbnail: "../assets/images/work-thumbs/project06.jpg",
-    description: "A collection of custom VST/AU audio plugins including a granular synthesizer, spectral processor, and adaptive dynamics processor built with JUCE.",
-    techStack: ["JUCE", "C++", "DSP"],
-    links: [
-      { label: "Download", url: "#", icon: "external" },
-      { label: "Source Code", url: "#", icon: "github" }
-    ]
+    date: "2024-06-20",
+    thumbnail: "../assets/images/thumbnails/thumbnails (8).jpg",
+    description: "Post-show soundtrack production.",
+    techStack: ["Studio One", "Recording", "Micing", "Mixing"],
+    projectPage: "../project-pages/spongebob-soundtrack.html",
+    roles: ["Recording Engineer", "Audio Editing", "Mixing"]
+  },
+  {
+    id: 7,
+    title: "Theme for Carnival",
+    category: CATEGORIES.AUDIO_PRODUCTION,
+    year: 2023,
+    date: "2023-12-31",
+    thumbnail: "../assets/images/thumbnails/thumbnails (19).png",
+    description: "Instrumental music piece produced for an annual carnival.",
+    techStack: ["Studio One", "Recording", "Micing", "Mixing"],
+    projectPage: "../project-pages/theme-for-carnival.html",
+    roles: ["Recording Engineer", "Audio Editing", "Mixing"]
   }
 ];
 
@@ -180,53 +198,75 @@ class WorkGallery {
   }
 
   // Generate card HTML (shared across all views)
+  // Cards link to their project detail pages
   generateCardHTML(item, index) {
     const techTags = item.techStack
+      .slice(0, 4) // Show max 4 tech tags on card
       .map(tech => `<span class="tech-tag">${tech}</span>`)
       .join('');
+    
+    // If there are more tech tags, add a "+N more" indicator
+    const moreTech = item.techStack.length > 4 
+      ? `<span class="tech-tag tech-tag--more">+${item.techStack.length - 4}</span>` 
+      : '';
 
-    const links = item.links
-      .map(link => `
-        <a href="${link.url}" class="card-link" target="_blank" rel="noopener noreferrer">
-          ${this.getIcon(link.icon)}
-          <span>${link.label}</span>
-        </a>
-      `)
-      .join('');
+    // Generate role tags for the back
+    const roleTags = item.roles
+      ? item.roles.slice(0, 3).map(role => `<span class="role-tag">${role}</span>`).join('')
+      : '';
+
+    // Check if thumbnail exists or use placeholder
+    const thumbnailStyle = item.thumbnail 
+      ? `background-image: url('${item.thumbnail}')`
+      : '';
 
     return `
-      <article class="gallery-card" data-id="${item.id}" style="--card-index: ${index}">
-        <div class="gallery-card-inner">
-          <!-- Front Side -->
-          <div class="gallery-card-front">
-            <div class="card-thumbnail" style="background-image: url('${item.thumbnail}')"></div>
-            <div class="card-front-content">
+      <article class="gallery-card" data-id="${item.id}" data-project-url="${item.projectPage}" style="--card-index: ${index}">
+        <a href="${item.projectPage}" class="gallery-card-link" aria-label="View ${item.title} project details">
+          <div class="gallery-card-inner">
+            <!-- Front Side -->
+            <div class="gallery-card-front">
+              <div class="card-thumbnail" style="${thumbnailStyle}">
+                <div class="card-thumbnail-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                  </svg>
+                </div>
+              </div>
+              <div class="card-front-content">
+                <h3>${item.title}</h3>
+                <span class="card-category-badge">${item.category}</span>
+              </div>
+            </div>
+            <!-- Back Side -->
+            <div class="gallery-card-back">
               <h3>${item.title}</h3>
-              <span class="card-category-badge">${item.category}</span>
+              <p class="card-back-description">${item.description}</p>
+              <div class="card-back-meta">
+                <div class="meta-item">
+                  ${this.getIcon('folder')}
+                  <span>${item.category}</span>
+                </div>
+                <div class="meta-item">
+                  ${this.getIcon('calendar')}
+                  <span>${item.year}</span>
+                </div>
+              </div>
+              ${roleTags ? `<div class="card-back-roles">${roleTags}</div>` : ''}
+              <div class="card-back-tech">
+                ${techTags}${moreTech}
+              </div>
+              <div class="card-back-links">
+                <span class="card-link card-link--view">
+                  ${this.getIcon('external')}
+                  <span>View Project</span>
+                </span>
+              </div>
             </div>
           </div>
-          <!-- Back Side -->
-          <div class="gallery-card-back">
-            <h3>${item.title}</h3>
-            <p class="card-back-description">${item.description}</p>
-            <div class="card-back-meta">
-              <div class="meta-item">
-                ${this.getIcon('folder')}
-                <span>${item.category}</span>
-              </div>
-              <div class="meta-item">
-                ${this.getIcon('calendar')}
-                <span>${item.year}</span>
-              </div>
-            </div>
-            <div class="card-back-tech">
-              ${techTags}
-            </div>
-            <div class="card-back-links">
-              ${links}
-            </div>
-          </div>
-        </div>
+        </a>
       </article>
     `;
   }
@@ -510,24 +550,46 @@ document.addEventListener('DOMContentLoaded', () => {
  * Usage: addProject({ title: '...', category: '...', ... })
  * 
  * Required fields:
- * - id: unique identifier
- * - title: project title
- * - category: category name (e.g., 'Game Audio', 'Sound Design')
+ * - id: unique identifier (number)
+ * - title: project title (string)
+ * - category: category name - use CATEGORIES constant for consistency
  * - year: year (number)
  * - date: ISO date string (e.g., '2025-01-15')
- * - thumbnail: path to thumbnail image
+ * - thumbnail: path to thumbnail image (can be empty string for placeholder)
  * - description: project description
  * - techStack: array of technologies used
- * - links: array of { label, url, icon } objects
+ * - projectPage: relative path to project detail page (e.g., '../project-pages/my-project.html')
+ * 
+ * Optional fields:
+ * - roles: array of roles performed on the project
+ * 
+ * Example:
+ * addProject({
+ *   id: 8,
+ *   title: 'New Project',
+ *   category: CATEGORIES.GAME_AUDIO,
+ *   year: 2025,
+ *   date: '2025-06-01',
+ *   thumbnail: '../assets/images/thumbnails/new-project-thumb.jpg',
+ *   description: 'Description of the project...',
+ *   techStack: ['Unity', 'FMOD'],
+ *   projectPage: '../project-pages/new-project.html',
+ *   roles: ['Sound Designer', 'Composer']
+ * });
  */
 function addProject(project) {
   // Validate required fields
-  const required = ['id', 'title', 'category', 'year', 'date', 'thumbnail', 'description', 'techStack', 'links'];
-  const missing = required.filter(field => !project[field]);
+  const required = ['id', 'title', 'category', 'year', 'date', 'description', 'techStack', 'projectPage'];
+  const missing = required.filter(field => !project.hasOwnProperty(field));
   
   if (missing.length > 0) {
     console.error(`Missing required fields: ${missing.join(', ')}`);
     return false;
+  }
+
+  // Set default thumbnail to empty string if not provided
+  if (!project.thumbnail) {
+    project.thumbnail = '';
   }
 
   galleryData.push(project);
@@ -540,4 +602,12 @@ function addProject(project) {
   }
 
   return true;
+}
+
+/**
+ * Get all available categories
+ * Useful for ensuring consistency between gallery and project pages
+ */
+function getCategories() {
+  return { ...CATEGORIES };
 }

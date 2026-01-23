@@ -681,8 +681,8 @@ img.full-image:hover {
    Previous/Next project links
    ============================================= */
 .project-navigation {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  justify-content: center;
   gap: 2rem;
   padding: 3rem 0;
   margin-top: 2rem;
