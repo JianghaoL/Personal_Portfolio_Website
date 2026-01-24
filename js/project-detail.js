@@ -357,6 +357,19 @@ function addLightboxStyles() {
       transition: width 0.1s ease-out;
     }
     
+    /* Mobile - attach progress bar to header */
+    @media (max-width: 768px) {
+      .reading-progress {
+        top: 70px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .reading-progress {
+        top: 60px;
+      }
+    }
+    
     /* Lazy Loading States */
     .lazy-loading {
       opacity: 0;

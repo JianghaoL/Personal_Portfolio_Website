@@ -541,19 +541,19 @@ header {
 
   /* Intro Section Mobile */
   #intro {
-    margin-top: -45vh;
-    padding-top: 1.5rem;
+    padding: 3rem 1.5rem;
+    margin-top: 0;
   }
 
   .intro-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    padding: 0 1.5rem 2rem;
+    padding: 0;
   }
 
   .intro-photo {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     margin: 0 auto;
   }
 
@@ -636,17 +636,17 @@ header {
 
   /* Intro Section Small Mobile */
   #intro {
-    margin-top: -40vh;
+    padding: 2.5rem 1rem;
   }
 
   .intro-grid {
-    padding: 0 1rem 1.5rem;
+    padding: 0;
     gap: 1rem;
   }
 
   .intro-photo {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
   }
 
   .intro-card h2 {
