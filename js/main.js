@@ -117,3 +117,71 @@ if (typeEl) {
     if (i >= text.length) clearInterval(typer);
   }, speed);
 }
+
+// =============================================
+// Mobile Navigation Toggle
+// =============================================
+(function initMobileNav() {
+  const mobileToggle = document.querySelector('.mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (!mobileToggle || !navLinks) return;
+
+  // Toggle menu on button click
+  mobileToggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const isExpanded = mobileToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    mobileToggle.setAttribute('aria-expanded', isExpanded);
+    
+    // Toggle body scroll when menu is open
+    document.body.style.overflow = isExpanded ? 'hidden' : '';
+  });
+
+  // Close menu when clicking a nav link
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function() {
+      mobileToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (navLinks.classList.contains('active') && 
+        !navLinks.contains(e.target) && 
+        !mobileToggle.contains(e.target)) {
+      mobileToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+      mobileToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      mobileToggle.focus();
+    }
+  });
+
+  // Handle window resize - close menu if resizing to desktop
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+        mobileToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    }, 250);
+  });
+})();
