@@ -31,7 +31,6 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   height: 100vh;
   min-height: 500px;
-  max-height: 900px;
   margin-top: -80px; /* Offset the body padding for full-screen hero */
   padding-top: 80px; /* Add back padding so content isn't under header */
   display: flex;
@@ -160,11 +159,12 @@ section.wave-section > *:not(.section-wave-canvas) {
 
 /* Intro Section */
 #intro {
-  background: var(--bg);
+  background: transparent;
   position: relative;
   overflow: hidden;
-  padding-top: 0rem;
-  margin-top: -30vh; /* Reduced for better mobile handling */
+  padding-top: 2rem;
+  margin-top: -50vh; /* Pull up to overlap hero/animation */
+  z-index: 2; /* Ensure intro is above hero */
 }
 #intro::before {
   content: none;
@@ -537,12 +537,10 @@ header {
 
   /* Hero Section Mobile */
   #hero {
-    height: auto;
-    min-height: 60vh;
-    max-height: none;
+    height: 100vh;
+    min-height: 400px;
     margin-top: -70px;
-    padding-top: 100px;
-    padding-bottom: 3rem;
+    padding-top: 70px;
   }
 
   #hero h1 {
@@ -560,8 +558,8 @@ header {
 
   /* Intro Section Mobile */
   #intro {
-    margin-top: 0;
-    padding-top: 2rem;
+    margin-top: -45vh;
+    padding-top: 1.5rem;
   }
 
   .intro-grid {
@@ -635,10 +633,10 @@ header {
 
   /* Hero Section Small Mobile */
   #hero {
-    min-height: 50vh;
+    height: 100vh;
+    min-height: 350px;
     margin-top: -60px;
-    padding-top: 80px;
-    padding-bottom: 2rem;
+    padding-top: 60px;
   }
 
   #hero h1 {
@@ -654,6 +652,10 @@ header {
   }
 
   /* Intro Section Small Mobile */
+  #intro {
+    margin-top: -40vh;
+  }
+
   .intro-grid {
     padding: 0 1rem 1.5rem;
     gap: 1rem;
