@@ -127,6 +127,18 @@ const galleryData = [
     techStack: ["Python", "C#", "Blender API", "Unity", "Git"],
     projectPage: "../project-pages/blender-unity-communicator.html",
     roles: ["Developer"]
+  },
+  {
+    id: 9,
+    title: "Sisyphus's Worst Day",
+    category: CATEGORIES.GAME_AUDIO,
+    year: 2026,
+    date: "2026-05-05",
+    thumbnail: "../assets/images/thumbnails/thumbnails (6).jpg",
+    description: "An innovative puzzle game that reimagines the myth of Sisyphus in a modern context.",
+    techStack: ["FMOD", "C#", "Unity", "Perforce", "Sound Design"],
+    projectPage: "../project-pages/sisyphus-worst-day.html",
+    roles: ["Lead Technical Sound Designer", "Audio Implementation",]
   }
 ];
 
